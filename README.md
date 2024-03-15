@@ -2,6 +2,7 @@
 
 Youtube Tutorial:  
 https://www.youtube.com/watch?v=GweaV8ZO7oA  
+![image](https://github.com/Parrot222/PDF-Reader/blob/main/pdf16.png)  
 
 The script for the renderer feature is primarily based on the examples provided in the following websites: 
 

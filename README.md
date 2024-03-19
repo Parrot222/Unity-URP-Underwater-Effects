@@ -1,6 +1,6 @@
 # Unity-URP-Underwater-Effects
 
-Youtube Tutorial:  
+Tutorial:  
 https://www.youtube.com/watch?v=GweaV8ZO7oA  
   
 ![image](https://github.com/Parrot222/Unity-URP-Underwater-Effects/blob/main/underwater%20thumbnail.png)  

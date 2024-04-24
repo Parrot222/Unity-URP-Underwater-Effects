@@ -1,8 +1,7 @@
-using System;
-using System.Collections.Generic;
-using UnityEngine;
+//Created by Paro.
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
+using UnityEngine;
 
 public class Underwater : ScriptableRendererFeature
 {
@@ -54,6 +53,8 @@ public class Underwater : ScriptableRendererFeature
 
             //it is very important that if something fails our code still calls 
             //CommandBufferPool.Release(cmd) or we will have a HUGE memory leak
+            if(settings.material == null) return;
+
             try
             {
                 //here we set out material properties
@@ -97,6 +98,7 @@ public class Underwater : ScriptableRendererFeature
         pass.settings = settings;
         pass.renderPassEvent = settings.renderPassEvent;
     }
+#if UNITY_2022_1_OR_NEWER
     public override void SetupRenderPasses(ScriptableRenderer renderer, in RenderingData renderingData)
     {
         var cameraColorTargetIdent = renderer.cameraColorTarget;
@@ -107,5 +109,15 @@ public class Underwater : ScriptableRendererFeature
     {
         renderer.EnqueuePass(pass);
     }
+#else
+    // called every frame once per camera
+    public override void AddRenderPasses(ScriptableRenderer renderer, ref RenderingData renderingData)
+    {
+        var cameraColorTargetIdent = renderer.cameraColorTarget;
+        pass.Setup(cameraColorTargetIdent);
+        renderer.EnqueuePass(pass);
+    }
+#endif
 }
+
 
